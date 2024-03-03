@@ -11,4 +11,4 @@ Conclusao lab1 SO Otavio Bruzadin
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/abdff516-8ce4-49b1-8b69-0a8444eb9390)
 
 
-Como podemos ver nos prints acima o arquivo helloWorld.c agora chamado de lab01Otavio.c para atender os requisitos de entrega foi executado com exito na maquina virtual da AWS, apos isso foi realizado o processo de commit e push do arquivo para o repositorio utilizando o terminal da maquina virtual.
+Como podemos ver nos prints acima o arquivo helloWorld.c agora chamado de lab01.c para atender os requisitos de entrega foi executado com exito na maquina virtual da AWS, apos isso foi realizado o processo de commit e push do arquivo para o repositorio utilizando o terminal da maquina virtual.
