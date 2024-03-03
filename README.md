@@ -27,7 +27,7 @@ Para finalizarmos, é necessário checar se a saída encontrada é de fato a des
 
 ![Imagem do WhatsApp de 2024-03-03 à(s) 13 45 45_2bde063e](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/9768b3ac-ca6c-4622-aecc-be48649cf4f8)
 
-Com a atividade finalizada, é necessário dar upload da mesma no repositório do Github. Primeiramente utilizamos **git add** *nome do arquivo* (lab01), para adicioná-lo ao próximo commit para o repositório, logo em seguida **git commit** para enviá-lo ao repositório e um **git push** para a confirmação final.
+Com a atividade finalizada, é necessário dar upload da mesma no repositório do Github. Primeiramente utilizamos **git init** para inicializar o repositorio local, seguido de **git add** *nome do arquivo* (lab01), para adicioná-lo ao próximo commit para o repositório, logo em seguida **git commit** para enviá-lo ao repositório e um **git push** para a confirmação final.
 
 (É possível notar que o nome do arquivo está helloworld.c, isso se deve pois outro integrante realizou os prints para esta parte)
 
