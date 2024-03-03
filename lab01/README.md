@@ -1,5 +1,5 @@
 
-Conclusao lab1 SO Otavio Bruzadin 
+Conclusao lab1 
 ![Screenshot from 2024-02-27 08-59-26](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/8e266fea-9746-4a9f-a905-7b3bcd0b2a77)
 ![Screenshot from 2024-02-27 09-26-16](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/79248ed4-1093-4405-b403-b4d5b7df768d)
 ![Screenshot from 2024-02-27 09-27-08](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/f7150e16-1119-4ba5-bf79-10da0c001d09)
