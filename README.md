@@ -4,7 +4,17 @@ Após terminarmos de efetuar o login e todas as credenciais necessárias no serv
 O objetivo desta atividade é a criação e execução de um código **Hello World!** em qualquer linguagem de programação (optamos pela linguagem C).
 
 De início foi necessário fazer a instalação do pacote Development Tool para a compilação do código juntamente com a instalação de um editor de texto, o editor escolhido foi o Nano.
-**PRINT DA INSTALAÇÃO DO DEVELOPMENT TOOLS**
+sudo dnf groupinstall 'Development Tools'
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/ff3227f5-f493-40f1-9d7e-e637eb1bfbf7)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/6f052c5f-173b-4cc5-9273-f3e2d0262a80)
+
+Depois da confirmação 'y' do comando
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/61742dd0-49dc-4e2e-8a2b-586487244aa8)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/7d5f17e6-c2e7-4c4c-919e-0d141c6cc12b)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/c3cf330b-8cd1-4c9d-9191-9c2c81c95852)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/01b78448-d1dc-441c-b21f-d781579e61d3)
+
 
 ![Imagem do WhatsApp de 2024-03-03 à(s) 13 33 54_583a0b1c](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/7945f87c-7d15-4c3d-8b01-e930fbd51845)
 
