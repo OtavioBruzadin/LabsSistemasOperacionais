@@ -2,8 +2,9 @@ Conclusão Lab Sistemas Operacionais
 
 O objetivo desta atividade laboratorial foi a criação de um programa em C que nos permita ver como a sincronia entre as tarefas é realizada por meio de troca de mensagens e memória compartilhada.
 
-![Imagem do WhatsApp de 2024-03-05 à(s) 15 56 00_621b8ab6](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/856065c7-f4d3-4343-8a69-c532c9b817e6)
-![Imagem do WhatsApp de 2024-03-05 à(s) 15 56 18_6029f222](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/b62a0580-a92d-4d1f-ad5e-28e247bba647)
+![Imagem do WhatsApp de 2024-03-09 à(s) 14 32 57_551a95bb](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/b0ebfa84-f930-47cc-a562-45f247788777)
+
+![Imagem do WhatsApp de 2024-03-09 à(s) 14 33 06_9bbf4abf](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/9eb7857c-fe2c-4059-be75-8cda8cb65765)
 
 Neste código é possível perceber a inclusão de novas bibliotecas para que o programa em C possa funcionar corretamente, dentre elas estão ***stdlib.h***, ***unistd.h***, ***sys/wait.h*** e ***string.h*** além dessas bibliotecas também devemos definir um tamanho de *Buffer* máximo que neste caso foi definido como 256.
 
