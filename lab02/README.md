@@ -30,3 +30,39 @@ Após a criação do filho, precisamos verificar se sua criação não falhou, e
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/532f42db-f512-40bd-8e64-d7100746768e)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Questões a serem respondidas**
+
+- 1: Você é capaz de identificar os trechos executados por pai e filho?
+
+Executado pelo pai = ![Imagem do WhatsApp de 2024-03-07 à(s) 15 34 41_efaae1f2](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/6e3aa889-92f7-4094-a1c0-3c4f5fbf20df)
+
+Pois o *pid é maior que 0*
+
+Executado pelo filho = ![Imagem do WhatsApp de 2024-03-07 à(s) 15 34 11_d0bc76f9](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/fb2eb9fc-dfa7-45c7-a2a7-b4c783e22abb)
+
+Pois o *pid == 0*
+
+- 2: Quantos processos serão criados?
+
+![Imagem do WhatsApp de 2024-03-07 à(s) 14 34 38_5f5f1e1d](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/c80d5af8-c5ad-43f9-86e0-74a68296b311)
+
+Serão criados 8 processos, pois devemos levar em consideração que o número total de processos criados é igual a 2^n, como é possivel perceber no print, existem 3 linhas de código com a função *fork()*, portanto será 2^3 = 8.
