@@ -29,5 +29,17 @@ Após a criação do filho, precisamos verificar se sua criação não falhou, e
 
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/532f42db-f512-40bd-8e64-d7100746768e)
 
+Com o código funcionando sem falhas até o momento, precisamos configurar o que o processo filho irá fazer. Assim, fazemos a verificação se ele está funcionando utilizando o mesmo comando *if (pid == 0)*, se sim, ele fecha o descritor de arquivo de escrita do pipe no processo filho *close(pipefd[1])*.
 
-Caso não aconteça erros na criação do *pipe*
+Após isso, ele lê a mensagem enviada pelo processo pai através do pipe, *read(pipefd[0], message_to_child, BUFFER_SIZE)*, e imprime a mensagem recebida pelo do processo pai *printf("Child process received message: $s\n", message_to_child)*
+
+Em seguida o processo filho envia uma respota ao processo pai através do pipe, utilizando a função *char reply[] = "Message received by child process"*, a função *write(pipefd[0], reply, strlen(reply) + 1)* escreve a mensagem de resposta no pipe usando o descritor de arquivo de leitura *pipefd[0]*. O *strlen(reply) + 1* garante que a mensagem completa, incluindo o caractere nulo de terminação da string, seja escrita no pipe.
+
+É utilizamos um *close(pipefd[0]* para fechar o descritor de arquivo de leitura do pipe no processo filho.
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/020523d2-ab2d-436f-a0a6-dc2db01b0621)
+
+O código para do processo pai é similar ao do filho, ele inicia caso o *pid != 0*, e começa utilizando fechando o descritor de arquivo de leitura do pipe no processo pai com a função *close(pipefd[0])*.
+Agora utilizamos a função *fgets(message_to_parent, BUFFER_SIZE, stdin)* para que o usuário escreva uma mensagem que será enviada para o filho, e *message_to_parent[strcspn(message_to_parent, "\n")] = '\0'* que serve para remover o caractere de nova linha da mensagem lida.
+
+Com a função *write(pipefd[1], message_to_parent, strlen(message_to_parent) + 1)* é enviada a mensagem do processo pai para o processo filho através do pipe.
