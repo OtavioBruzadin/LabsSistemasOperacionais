@@ -13,4 +13,21 @@ Neste código é possível perceber a inclusão de novas bibliotecas para que o 
 - **sys/wait.h** contém declarações de funções e constantes associadas à espera de processos filhos no sistema.
 - **string.h** é a biblioteca de manipulação de *strings* em C.
 
-Para o início da função *main()* devemos criar as variáveis *pipefd[2]*, que possui a função de declarar um *array* de dois elementos e serve para armazenas os descritores de arquivo para um pipe.
+Para o início da função *main()* devemos criar as variáveis *int pipefd[2]*, que possui a função de declarar um *array* de dois elementos e serve para armazenas os descritores de arquivo para um pipe; *pid_t pid*, que declara uma variável que armazena ID do processo, e a criação de três variáveis *char*, a **message_to child, message_to_parent** e **concatenated_message** estas três variáveis declaram respectivamente uma matriz para armazenamento da mensagem enviada pelo filho e pelo pai, e a declaração de uma matriz para armazenar a mensagem concatenada.
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/c7eb2ad4-94ce-4f6e-b524-9bd6639419f7)
+
+A criação do *pipe* é feita com um *if (pipe(pipefd) == -1)*, esse código é feito para testar se a função pipe falhou. A função *pipe()* é usada para criar um pipe não nomeado, e os descritores do arquivo são armazenados no *array* **pipefd**. Caso o erro ocorra, é utilizada a função *perror("pipe")* que imprime uma mensagem de erro e indica que o erro foi no pipe, e a função *exit(EXIT_FAILURE)* encerra o programa com um estatus de falha.
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/c993a5c5-98fc-4301-ac3f-177f55b0b681)
+
+Agora é necessário criar um novo processo filho utilizando a função *pid = fork()*, após essa linha de código, existirão dois processos em execução, o processo pai e o processo filho, onde o filho é uma cópia exata do pai.
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/8d3394fc-0602-415d-bb82-ce7931121d4f)
+
+Após a criação do filho, precisamos verificar se sua criação não falhou, então utilizamos mais uma vez a função *if*, sua diferença é que ao invés de usarmos *pipe(pipefd)*, utilizamos o *pid*, e caso ocorra falhas na criação, a mensagem de erro irá indicar que foi no **Fork** e encerrará o programa também.
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/532f42db-f512-40bd-8e64-d7100746768e)
+
+
+Caso não aconteça erros na criação do *pipe*
