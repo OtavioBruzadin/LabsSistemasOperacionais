@@ -1,6 +1,6 @@
 Conclusão Lab Sistemas Operacionais
 
-O objetivo desta atividade laboratorial foi a criação de um programa em C que nos permita ver como a sincronia entre as tarefas é realizada por meio de troca de mensagens e memória compartilhada.
+O objetivo desta atividade laboratorial foi a criação de um programa em C que nos permita ver como a sincronia entre as tarefas é realizada por meio de troca de mensagens ou memória compartilhada.
 
 ![Imagem do WhatsApp de 2024-03-09 à(s) 14 32 57_551a95bb](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/b0ebfa84-f930-47cc-a562-45f247788777)
 
@@ -40,6 +40,9 @@ Em seguida o processo filho envia uma respota ao processo pai através do pipe, 
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/020523d2-ab2d-436f-a0a6-dc2db01b0621)
 
 O código para do processo pai é similar ao do filho, ele inicia caso o *pid != 0*, e começa utilizando fechando o descritor de arquivo de leitura do pipe no processo pai com a função *close(pipefd[0])*.
+
+
 Agora utilizamos a função *fgets(message_to_parent, BUFFER_SIZE, stdin)* para que o usuário escreva uma mensagem que será enviada para o filho, e *message_to_parent[strcspn(message_to_parent, "\n")] = '\0'* que serve para remover o caractere de nova linha da mensagem lida.
 
 Com a função *write(pipefd[1], message_to_parent, strlen(message_to_parent) + 1)* é enviada a mensagem do processo pai para o processo filho através do pipe.
+
