@@ -51,6 +51,8 @@ Para a concatenção entre a mensagem do processo pai para o processo filho, é 
 Para finalizar devemos fechar o descritor de arquivo de escrita do pipe no processo pai e aguardar a conclusão do processo filho, devemos usar a função close(pipefd[1]) e wait(NULL) respectivamente.
 
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/e09c31ab-1d9e-4c2e-804c-becdfa9aadb0)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/78da5c1d-bdd0-4121-b7c7-160cb0c0fdf3)
+O resultado ocorreu conforme o esperado.
 
 
 
