@@ -30,9 +30,6 @@ Para apresentar o resultado na tela, basta utilizarmos o comando abaixo
 ## Comprovando a execução do programa:
 
 O objetivo desta atividade laboratorial foi a criação de um programa em C que nos permita ver como a sincronia entre as tarefas é realizada por meio de troca de mensagens.
-
-Inicialmente é necessário fazer a instalação do compilador para a linguagem C e de um editor de texto, utilizaremos o *GCC* e como editor de texto utilizaremos o **Nano**.
-Para a iniciarmos o laboratório primeiro precisamos criar um novo arquivo .C, para isso utilizamos o comando *nano **nome do arquivo*** para se tornar um padrão, o arquivo foi nomeado ***lab02.c***.
  
 ![Imagem do WhatsApp de 2024-03-09 à(s) 14 32 57_551a95bb](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/b0ebfa84-f930-47cc-a562-45f247788777)
 
