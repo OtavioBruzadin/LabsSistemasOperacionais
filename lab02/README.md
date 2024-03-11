@@ -1,4 +1,33 @@
-Conclusão Lab Sistemas Operacionais
+## Como compilar o programa:
+
+Para compilar códigos em C, é necessário instalar o compilador gcc.
+```bash
+sudo dnf install gcc
+```
+Para instalar o editor nano devemos utilizar o seguinte comando:
+```bash
+sudo dnf install nano
+```
+Para criar e editar um arquivo `.c` utilizamos o seguinte comando:
+```bash
+nano lab.c
+```
+Após a criação e edição  para compilar, devemos utilizar o comando
+
+```bash
+gcc lab.c -o result
+```
+## Como executar o programa:
+
+Para apresentar o resultado na tela, basta utilizarmos o comando abaixo
+
+```bash
+./result
+```
+
+---
+
+## Comprovando a execução do programa:
 
 O objetivo desta atividade laboratorial foi a criação de um programa em C que nos permita ver como a sincronia entre as tarefas é realizada por meio de troca de mensagens.
 
@@ -58,6 +87,7 @@ E para fazermos o teste é necessário utilizar o comando **./result**.
 
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/e09c31ab-1d9e-4c2e-804c-becdfa9aadb0)
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/78da5c1d-bdd0-4121-b7c7-160cb0c0fdf3)
+
 O resultado ocorreu conforme o esperado.
 
 
