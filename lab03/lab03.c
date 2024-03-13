@@ -10,15 +10,15 @@
 // Define o tamanho da pilha para a thread
 #define FIBER_STACK (1024*64)
 
-// Variável para sinalizar o término da thread filho
-volatile sig_atomic_t child_finished = 0;
+// Variável compartilhada entre a thread filho e o processo pai
+int shared_int = 0;
 
 // Handler para o sinal enviado pela thread filho
 void sig_handler(int signum) {
     // Verifica se o sinal recebido é SIGUSR1
     if (signum == SIGUSR1) {
-        // Sinaliza que a thread filho terminou
-        child_finished = 1;
+        // Altera o valor do inteiro compartilhado
+        shared_int = 42;
     }
 }
 
@@ -56,6 +56,9 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
+    // Exibe o valor inicial do inteiro compartilhado
+    printf("Main: valor inicial do inteiro compartilhado: %d\n", shared_int);
+
     // Imprime uma mensagem indicando a criação da thread filho
     printf("Main: criando thread filho\n");
 
@@ -69,11 +72,14 @@ int main() {
     }
 
     // Aguarda o sinal SIGUSR1 enviado pela thread filho
-    while (!child_finished) {
+    while (shared_int == 0) {
         // Aguarda o sinal de término da thread filho
         printf("Main: aguardando sinal do filho...\n");
         sleep(1); // Aguarda por 1 segundo antes de verificar novamente
     }
+
+    // Exibe o valor do inteiro compartilhado, que foi alterado pela thread filho
+    printf("Main: valor do inteiro compartilhado alterado pela thread filho: %d\n", shared_int);
 
     // Libera a pilha alocada
     free(stack);
