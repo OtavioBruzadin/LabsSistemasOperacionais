@@ -29,10 +29,6 @@ Para apresentar o resultado na tela, basta utilizarmos o comando abaixo
 
 ---
 
-## Comprovando a execução do programa:
-![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/e8a7bebf-3cb7-4517-a1d0-9c69e6520848)
-![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/660f156b-c9ba-4fc4-a6f2-b6f8c997c79e)
-
 Este programa em C cria uma thread filho usando a função clone() para executar uma função específica (threadFunction).
 
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/8a24bec3-2cd7-400d-b8c1-67b93ea77ca9)
@@ -53,3 +49,6 @@ O processo pai configura um manipulador de sinal (sig_handler) para o sinal SIGU
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/bc732085-68fd-4581-b496-a10a0a6983d0)
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/b1d49fe7-a4e7-41a5-a227-b6b07cbf7668)
 
+## Comprovando a execução do programa:
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/e8a7bebf-3cb7-4517-a1d0-9c69e6520848)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/660f156b-c9ba-4fc4-a6f2-b6f8c997c79e)
