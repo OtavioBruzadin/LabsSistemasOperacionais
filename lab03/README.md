@@ -39,10 +39,15 @@ Este programa em C cria uma thread filho usando a função clone() para executar
 Para a execucao do programa utilizamos as seguintes bibliotecas:
 
 stdlib.h e malloc.h: Utilizamos para alocação dinâmica de memória com malloc() e free().
+
 sys/types.h e sys/wait.h: utilizadas para definições de tipos e funções para manipulação de processos, como waitpid().
+
 signal.h: Utilizada para configurar manipuladores de sinal com sigaction().
+
 sched.h: utilizado para criar uma nova thread com clone().
+
 stdio.h: Utilizada para entrada e saída de dados.
+
 
 O processo pai configura um manipulador de sinal (sig_handler) para o sinal SIGUSR1, que será enviado pela thread filho quando ela terminar de executar sua função. A thread filho por sua vez é criada em uma pilha separada, definida pela macro FIBER_STACK, que representa o tamanho da pilha. E a função threadFunction é a função que será executada pela thread filho, nela, uma mensagem é impressa indicando que a thread filho está encerrando e, em seguida, é enviado um sinal SIGUSR1 para o processo pai.
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/bc732085-68fd-4581-b496-a10a0a6983d0)
