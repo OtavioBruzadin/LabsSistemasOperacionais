@@ -60,3 +60,5 @@ O processo pai espera pelo sinal e, quando recebido, imprime o valor alterado da
 ## Comprovando a execução do programa:
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/e8a7bebf-3cb7-4517-a1d0-9c69e6520848)
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/660f156b-c9ba-4fc4-a6f2-b6f8c997c79e)
+
+O resultado ocorreu conforme o esperado.
