@@ -54,8 +54,6 @@ compartilhada shared_int for igual a 0, o processo pai imprime uma mensagem indi
 Quando a thread filho termina, envia o sinal SIGUSR1, assim o manipulador de sinal sig_handler é chamado no 
 processo pai. Dentro deste manipulador de sinal, o valor da variável compartilhada shared_int é alterado para 42(um numero escolhido aleatoriamente para o teste),
 Após a alteração do valor de shared_int, o processo pai exibe o novo valor e libera a memória alocada para a pilha da thread filho.
-Resumindo, o código cria uma thread filho que altera uma variável compartilhada e envia um sinal para o processo pai quando termina. 
-O processo pai espera pelo sinal e, quando recebido, imprime o valor alterado da variável compartilhada pela thread filho.
 
 ## Comprovando a execução do programa:
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/31077442/e8a7bebf-3cb7-4517-a1d0-9c69e6520848)
