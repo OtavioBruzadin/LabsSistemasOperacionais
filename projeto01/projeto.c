@@ -7,26 +7,26 @@
 #define MAX_PESSOAS 104
 
 typedef struct {
-    int tempo_chegada;
+    int tempoDeChegada;
     int direcao;
 } Pessoa;
 
-int direcao_atual = -1; // -1 indica que a escada está parada
-sem_t sem_escada;
-int ultimo_momento = 0;
+int direcaoAtual = -1; // -1 indica que a escada está parada
+sem_t semEscada;
+int ultimoMomento = 0;
 
-void *pessoa_thread(void *arg) {
+void *threadPessoa(void *arg) {
     Pessoa *pessoa = (Pessoa *)arg;
-    
-    sleep(pessoa->tempo_chegada);
-    
-    sem_wait(&sem_escada);
-    if (direcao_atual == -1 || direcao_atual == pessoa->direcao) {
-        direcao_atual = pessoa->direcao;
-        ultimo_momento = pessoa->tempo_chegada + 10;
+
+    sleep(pessoa->tempoDeChegada);
+
+    sem_wait(&semEscada);
+    if (direcaoAtual == -1 || direcaoAtual == pessoa->direcao) {
+        direcaoAtual = pessoa->direcao;
+        ultimoMomento = pessoa->tempoDeChegada + 10;
     }
-    sem_post(&sem_escada);
-    
+    sem_post(&semEscada);
+
     return NULL;
 }
 
@@ -51,21 +51,21 @@ int main() {
         return 1;
     }
 
-    sem_init(&sem_escada, 0, 1);
+    sem_init(&semEscada, 0, 1);
 
     // Lê o número de pessoas do arquivo de entrada
     fscanf(entrada, "%d", &n);
-    
+
     // Lê os dados de cada pessoa do arquivo de entrada
     for (int i = 0; i < n; i++) {
-        fscanf(entrada, "%d %d", &pessoas[i].tempo_chegada, &pessoas[i].direcao);
+        fscanf(entrada, "%d %d", &pessoas[i].tempoDeChegada, &pessoas[i].direcao);
     }
 
     fclose(entrada);
 
     // Cria uma thread para cada pessoa
     for (int i = 0; i < n; i++) {
-        pthread_create(&threads[i], NULL, pessoa_thread, (void *)&pessoas[i]);
+        pthread_create(&threads[i], NULL, threadPessoa, (void *) &pessoas[i]);
     }
 
     // Aguarda todas as threads terminarem
@@ -74,11 +74,11 @@ int main() {
     }
 
     // Escreve o último momento em que a escada parou no arquivo de saída
-    fprintf(saida, "%d\n", ultimo_momento);
+    fprintf(saida, "%d\n", ultimoMomento);
 
     fclose(saida);
 
-    sem_destroy(&sem_escada);
+    sem_destroy(&semEscada);
 
     return 0;
 }
