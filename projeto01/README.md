@@ -10,12 +10,12 @@ sudo dnf install nano
 ```
 Para criar e editar um arquivo `.c` utilizamos o seguinte comando:
 ```bash
-nano lab.c
+nano projeto.c
 ```
 Após a criação e edição  para compilar, devemos utilizar o comando
 
 ```bash
-gcc lab.c -o result
+gcc projeto.c -o result -lpthread
 ```
 ## Como executar o programa:
 
