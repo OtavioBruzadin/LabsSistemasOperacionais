@@ -68,20 +68,21 @@ Após a conclusão da atualização da direção atual da escada rolante e do ú
    
     Para controlar a direção da escada rolante e garantir que apenas uma direção esteja ativa em qualquer momento, utilizamos uma variável compartilhada (direcao_atual) dentro da estrutura EstadoEscada que é mapeada em uma área de memória compartilhada entre todos os processos:
 
-
+```bash
 typedef struct {
     int direcao_atual;
     int ultimo_momento;
 } EstadoEscada;
-
+```
 
 A lógica implementada na função simula_pessoa assegura que, antes de qualquer processo modificar a direção atual, ele verifica se a direção desejada é igual à direção atual ou se a escada está parada (direcao_atual == -1). Isso é feito dentro da região crítica protegida pelo semáforo, garantindo que as verificações e atualizações sejam feitas de maneira atômica, sem interferência de outros processos:
 
+```
 if (estado->direcao_atual == -1 || estado->direcao_atual == direcao) {
     estado->direcao_atual = direcao;
     estado->ultimo_momento = tempo_chegada + 10;
 }
-
+```
 Essa abordagem assegura que a escada só mude de direção quando ninguém estiver usando-a na direção oposta e que apenas uma direção esteja ativa em cada momento, mantendo a sincronização e lógica esperadas conforme o enunciado do problema.
 
 
