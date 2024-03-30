@@ -28,11 +28,9 @@ Para apresentar o resultado na tela, basta utilizarmos o comando abaixo
 ---
 
 
-Questões a serem respondidas
+Questões a serem respondidas:
 
 THREADS 
-Para abordar essas questões sobre o código, vamos rever os conceitos aplicados:
-
 
 1. Estratégia para evitar que duas pessoas acessem a escada rolante ao mesmo tempo:
     Para isso foi utilizado um semáforo (`sem_t sem_escada;`) para controlar o acesso à escada rolante. O semáforo é inicializado com o valor 1 (`sem_init(&sem_escada, 0, 1);`), indicando que, inicialmente, uma thread (pessoa) pode acessar a região crítica – neste caso, a escada rolante.
