@@ -42,7 +42,9 @@ THREADS
 
 3. Como garantir que somente uma das direções está ativa de cada vez:
     A direção atual da escada rolante é controlada pela variável global `int direcao_atual;`, que é inicialmente definida como -1, que demonstra que a escada está parada. A direção pode ser alterada para 0 (indicando uma direção) ou 1 (indicando a direção oposta) conforme a necessidade das pessoas que estão chegando.
+   
    Dentro da função `pessoa_thread`, após adquirir o semáforo, a thread verifica se a direção atual da escada rolante corresponde à direção desejada pela pessoa (`if (direcao_atual == -1 || direcao_atual == pessoa->direcao)`). Se a direção for a mesma ou a escada estiver parada, a pessoa pode "entrar" na escada rolante, e a direção atual é atualizada para refletir a direção dessa pessoa.
+   
    Essa checagem e atualização da direção acontecem dentro da região crítica protegida pelo semáforo, o que garante que apenas uma direção esteja ativa em qualquer momento, e uma mudança de direção só pode ocorrer se nenhuma outra pessoa estiver utilizando a escada rolante em uma direção diferente. Isso efetivamente garante que a escada rolante só se mova em uma direção por vez, conforme as pessoas entram na escada rolante.
 
 
