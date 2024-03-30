@@ -34,8 +34,10 @@ THREADS
 
 1. Estratégia para evitar que duas pessoas acessem a escada rolante ao mesmo tempo:
     Para isso foi utilizado um semáforo (`sem_t sem_escada;`) para controlar o acesso à escada rolante. O semáforo é inicializado com o valor 1 (`sem_init(&sem_escada, 0, 1);`), indicando que, inicialmente, uma thread (pessoa) pode acessar a região crítica – neste caso, a escada rolante.
-   Antes de uma thread acessar a escada rolante (modificar o estado da direção atual ou calcular o último momento), ela deve adquirir o semáforo usando `sem_wait(&sem_escada);`. Isso decrementa o valor do semáforo. Se o valor for 0, isso significa que outra thread já está acessando a escada rolante, e a thread atual será bloqueada até que o semáforo seja liberado (seu valor incrementado novamente) pela thread que está na região crítica.
-   Após a thread realizar as operações necessárias (como entrar na escada rolante ou aguardar pela direção correta), ela libera o semáforo usando `sem_post(&sem_escada);`, permitindo que outra thread entre na região crítica. Este mecanismo garante que apenas uma thread por vez possa modificar o estado da escada rolante ou calcular o momento de sua utilização.
+
+    Antes de uma thread acessar a escada rolante (modificar o estado da direção atual ou calcular o último momento), ela deve adquirir o semáforo usando `sem_wait(&sem_escada);`. Isso decrementa o valor do semáforo. Se o valor for 0, isso significa que outra thread já está acessando a escada rolante, e a thread atual será bloqueada até que o semáforo seja liberado (seu valor incrementado novamente) pela thread que está na região crítica.
+
+    Após a thread realizar as operações necessárias (como entrar na escada rolante ou aguardar pela direção correta), ela libera o semáforo usando `sem_post(&sem_escada);`, permitindo que outra thread entre na região crítica. Este mecanismo garante que apenas uma thread por vez possa modificar o estado da escada rolante ou calcular o momento de sua utilização.
 
 
 2. Como garantir que somente uma das direções está ativa de cada vez:
