@@ -34,13 +34,13 @@ THREADS
 
 1. Estratégia para evitar que duas pessoas acessem a escada rolante ao mesmo tempo:
     Para isso foi utilizado um semáforo (`sem_t sem_escada;`) para controlar o acesso à escada rolante. O semáforo é inicializado com o valor 1 (`sem_init(&sem_escada, 0, 1);`), indicando que, inicialmente, uma thread (pessoa) pode acessar a região crítica – neste caso, a escada rolante.
-
+   
     Antes de uma thread acessar a escada rolante (modificar o estado da direção atual ou calcular o último momento), ela deve adquirir o semáforo usando `sem_wait(&sem_escada);`. Isso decrementa o valor do semáforo. Se o valor for 0, isso significa que outra thread já está acessando a escada rolante, e a thread atual será bloqueada até que o semáforo seja liberado (seu valor incrementado novamente) pela thread que está na região crítica.
 
     Após a thread realizar as operações necessárias (como entrar na escada rolante ou aguardar pela direção correta), ela libera o semáforo usando `sem_post(&sem_escada);`, permitindo que outra thread entre na região crítica. Este mecanismo garante que apenas uma thread por vez possa modificar o estado da escada rolante ou calcular o momento de sua utilização.
 
 
-2. Como garantir que somente uma das direções está ativa de cada vez:
+3. Como garantir que somente uma das direções está ativa de cada vez:
     A direção atual da escada rolante é controlada pela variável global `int direcao_atual;`, que é inicialmente definida como -1, que demonstra que a escada está parada. A direção pode ser alterada para 0 (indicando uma direção) ou 1 (indicando a direção oposta) conforme a necessidade das pessoas que estão chegando.
    Dentro da função `pessoa_thread`, após adquirir o semáforo, a thread verifica se a direção atual da escada rolante corresponde à direção desejada pela pessoa (`if (direcao_atual == -1 || direcao_atual == pessoa->direcao)`). Se a direção for a mesma ou a escada estiver parada, a pessoa pode "entrar" na escada rolante, e a direção atual é atualizada para refletir a direção dessa pessoa.
    Essa checagem e atualização da direção acontecem dentro da região crítica protegida pelo semáforo, o que garante que apenas uma direção esteja ativa em qualquer momento, e uma mudança de direção só pode ocorrer se nenhuma outra pessoa estiver utilizando a escada rolante em uma direção diferente. Isso efetivamente garante que a escada rolante só se mova em uma direção por vez, conforme as pessoas entram na escada rolante.
