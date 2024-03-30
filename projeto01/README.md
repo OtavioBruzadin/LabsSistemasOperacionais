@@ -43,6 +43,12 @@ QUESTÕES A SEREM RESPONDIDAS:
 
     -PROCESSOS:
 
+   Estratégia para evitar que duas pessoas acessem a escada rolante ao mesmo tempo:
+   
+   Utilizamos um semáforo POSIX, identificado por SEM_NAME, para controlar o acesso à região crítica do programa, que inclui a verificação e atualização da direção atual da escada rolante, bem como do último momento em que alguém utilizou a escada. O semáforo é inicializado com o valor 1 (sem_t* sem = sem_open(SEM_NAME, O_CREAT, 0666, 1);)
+Isso significa que, em qualquer momento, apenas um processo pode entrar na região crítica. Quando um processo (representando uma pessoa) quer acessar a escada rolante, ele primeiro tenta "travar" (ou "esperar por") o semáforo usando sem_wait(sem);. Isso reduz o contador do semáforo. Se o contador for maior que zero, o processo pode entrar na região crítica. Se o contador for zero, isso significa que outro processo já está na região crítica, e o processo atual será bloqueado até que o semáforo seja liberado (incrementado) por outro processo.
+Após a conclusão da atualização da direção atual da escada rolante e do último momento, o processo libera o semáforo usando sem_post(sem);, permitindo que outro processo entre na região crítica.
+
 
 3. Como garantir que somente uma das direções está ativa de cada vez:
    
@@ -57,8 +63,34 @@ QUESTÕES A SEREM RESPONDIDAS:
 
     -PROCESSOS:
 
+   Como garantir que somente uma das direções está ativa de cada vez:
 
-5. Discorra sobre as diferenças entre as implementações utilizando threads e processos e diga qual foi mais eficiente na solução do problema, justificando sua resposta.
+   
+    Para controlar a direção da escada rolante e garantir que apenas uma direção esteja ativa em qualquer momento, utilizamos uma variável compartilhada (direcao_atual) dentro da estrutura EstadoEscada que é mapeada em uma área de memória compartilhada entre todos os processos:
+
+
+typedef struct {
+    int direcao_atual;
+    int ultimo_momento;
+} EstadoEscada;
+
+
+A lógica implementada na função simula_pessoa assegura que, antes de qualquer processo modificar a direção atual, ele verifica se a direção desejada é igual à direção atual ou se a escada está parada (direcao_atual == -1). Isso é feito dentro da região crítica protegida pelo semáforo, garantindo que as verificações e atualizações sejam feitas de maneira atômica, sem interferência de outros processos:
+
+if (estado->direcao_atual == -1 || estado->direcao_atual == direcao) {
+    estado->direcao_atual = direcao;
+    estado->ultimo_momento = tempo_chegada + 10;
+}
+
+Essa abordagem assegura que a escada só mude de direção quando ninguém estiver usando-a na direção oposta e que apenas uma direção esteja ativa em cada momento, mantendo a sincronização e lógica esperadas conforme o enunciado do problema.
+
+
+
+
+3. Discorra sobre as diferenças entre as implementações utilizando threads e processos e diga qual foi mais eficiente na solução do problema, justificando sua resposta.
+
+
+Na solução do problema da escada rolante, threads são mais práticas devido ao compartilhamento direto do espaço de memória, facilitando a atualização e acesso a estados comuns, como a direção da escada e o momento de uso. Processos, tendo espaços de memória isolados, requerem mecanismos de comunicação inter-processo para compartilhar estados, complicando a implementação. Portanto, threads são mais eficientes para este problema, oferecendo uma solução mais simples e direta para sincronização e compartilhamento de dados entre as "pessoas" acessando a escada rolante."
 
 
 ## Comprovando a execução do programa:
