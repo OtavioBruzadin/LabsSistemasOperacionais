@@ -31,7 +31,9 @@ Para apresentar o resultado na tela, basta utilizarmos o comando abaixo
 QUESTÕES A SEREM RESPONDIDAS:
  
 1. Estratégia para evitar que duas pessoas acessem a escada rolante ao mesmo tempo:
+   
     -THREADS:
+   
     Para isso foi utilizado um semáforo (`sem_t sem_escada;`) para controlar o acesso à escada rolante. O semáforo é inicializado com o valor 1 (`sem_init(&sem_escada, 0, 1);`), indicando que, inicialmente, uma thread (pessoa) pode acessar a região crítica – neste caso, a escada rolante.
    
     Antes de uma thread acessar a escada rolante (modificar o estado da direção atual ou calcular o último momento), ela deve adquirir o semáforo usando `sem_wait(&sem_escada);`. Isso decrementa o valor do semáforo. Se o valor for 0, isso significa que outra thread já está acessando a escada rolante, e a thread atual será bloqueada até que o semáforo seja liberado (seu valor incrementado novamente) pela thread que está na região crítica.
@@ -42,8 +44,10 @@ QUESTÕES A SEREM RESPONDIDAS:
     -PROCESSOS:
 
 
-2. Como garantir que somente uma das direções está ativa de cada vez:
+3. Como garantir que somente uma das direções está ativa de cada vez:
+   
     -THREADS:
+   
     A direção atual da escada rolante é controlada pela variável global `int direcao_atual;`, que é inicialmente definida como -1, que demonstra que a escada está parada. A direção pode ser alterada para 0 (indicando uma direção) ou 1 (indicando a direção oposta) conforme a necessidade das pessoas que estão chegando.
    
    Dentro da função `pessoa_thread`, após adquirir o semáforo, a thread verifica se a direção atual da escada rolante corresponde à direção desejada pela pessoa (`if (direcao_atual == -1 || direcao_atual == pessoa->direcao)`). Se a direção for a mesma ou a escada estiver parada, a pessoa pode "entrar" na escada rolante, e a direção atual é atualizada para refletir a direção dessa pessoa.
@@ -54,7 +58,7 @@ QUESTÕES A SEREM RESPONDIDAS:
     -PROCESSOS:
 
 
-3. Discorra sobre as diferenças entre as implementações utilizando threads e processos e diga qual foi mais eficiente na solução do problema, justificando sua resposta.
+5. Discorra sobre as diferenças entre as implementações utilizando threads e processos e diga qual foi mais eficiente na solução do problema, justificando sua resposta.
 
 
 ## Comprovando a execução do programa:
