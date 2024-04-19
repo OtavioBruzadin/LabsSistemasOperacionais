@@ -96,16 +96,57 @@ A escolha entre threads e processos depende das características específicas do
 ## Comprovando a execução do programa:
 Prints versão utilizando processos:
 
-![imagemSO1](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/77bd1ad8-171e-454a-9da5-45a72acd99ad)
-![imagemSO2](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/dc440767-e1ec-432a-a1e9-0240654c3871)
-![imagemSO3](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/88f1d440-54af-495a-861b-671a1ba6569c)
-![imagemSO6](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/3566c794-888c-45ac-85e5-780532cebae0)
-![imagemSO4](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/fed9ea18-fbc8-47bf-beae-908cec1ed66f)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/8d4da809-8fab-49b7-b049-a3755f58b29a)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/2a1a775d-6e69-44f6-beec-9bfdb4d09c6b)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/f9c557a9-a474-4e35-ab5d-f9f11d800f45)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/ddd06fce-1f40-45aa-9d71-57fca56a9691)
+
+E1
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/fa33b52a-023e-4902-9d63-01a863698314)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/a990407d-f35d-4b56-946f-2638899fa80d)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/a7859c41-578f-4e1d-9189-808ee8968a42)
+
+E2
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/b5f27c6f-8a42-49c3-bff5-6d36ffe9b52b)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/7b43e01e-381b-40cd-856d-dc54eeb7dce7)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/bc3d6e48-7d6a-4822-b4fb-7374b86facc2)
+
+E3
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/1b409fe8-123f-44f9-9660-dced1deb9b35)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/4bb9e9a8-b85e-490f-a158-155a103c48d5)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/47b53dfa-4cf5-453e-919f-b4ce06e26ccb)
 
 
 Prints versão utilizando threads:
 
-![imagemSO5](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/fc1cdc65-dd13-4e27-b524-3785bf6e1ede)
-![imagemSO7](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/a6d2b20e-9472-4d02-af02-ac77694adf71)
-![imagemSO4](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/fed9ea18-fbc8-47bf-beae-908cec1ed66f)
-![imagemSO8](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/1be3464c-405f-4ef8-b949-b4a3356adf6b)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/2b543d7d-5898-4e5f-8044-24e4e66c082a)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/bfc6dc2a-cd34-43a8-8e94-9126eec0f814)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/7e7e1a8f-2f56-490b-a575-ab9029acc456)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/ff968d25-7417-4313-bcfa-d75ce07c5fbc)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/417b97bc-4083-42cd-a3ec-dcc6ffc67973)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/d74899e4-8102-4b5e-b215-e4825df0fdd2)
+
+E1
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/4ddd2dad-61d4-40a6-a4da-219e869de179)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/7233cc22-06b2-413f-899f-924cd88f2b34)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/9d784739-9b2b-42a9-9424-4b74d54262bc)
+
+E2
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/d66eb112-de22-4218-84f6-8efe9d36bff2)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/477e5049-ff07-4798-b1d5-60cbc82a7a00)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/9df47d2a-8408-46f9-87f8-0442fd9264c3)
+
+E3
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/da5bde76-89b2-4843-b775-79e911aaf3ed)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/a55ddf2e-41d6-456f-a56e-b7d931c65866)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/e52b83d8-0b45-4155-822a-906f967952e2)
+
+E4
+
+E5
