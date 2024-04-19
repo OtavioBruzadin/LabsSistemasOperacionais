@@ -8,7 +8,7 @@ Para instalar o editor nano devemos utilizar o seguinte comando:
 ```bash
 sudo dnf install nano
 ```
-Para criar e editar um arquivo `.c` utilizamos o seguinte comando:
+Para criar e editar um arquivo `.c` utilizamos os comandos:
 ```bash
 nano projeto.c
 nano projetoVerP.c
