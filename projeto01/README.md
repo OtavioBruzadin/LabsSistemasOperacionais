@@ -1,4 +1,4 @@
-## Como compilar o programa:
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/2149b7bc-81f6-4d1d-a530-002822f14ee5)## Como compilar o programa:
 
 Para compilar códigos em C, é necessário instalar o compilador gcc.
 ```bash
@@ -15,7 +15,7 @@ nano projeto.c
 Após a criação e edição  para compilar, devemos utilizar o comando
 
 ```bash
-gcc projeto.c -o result -lpthread
+gcc projeto.c -o result -lpthread -lrt
 ```
 ## Como executar o programa:
 
@@ -87,9 +87,9 @@ QUESTÕES A SEREM RESPONDIDAS:
 
 -Mais robusta em termos de segurança e isolamento de dados, já que os processos têm espaços de endereçamento separados.
 
--Requer o uso de mecanismos explícitos de comunicação entre processos, como pipes ou memória compartilhada, para troca de dados entre os processos.
+-Requer o uso de mecanismos explícitos de comunicação entre processos, como pipes, para troca de dados entre os processos.
 
-A escolha entre threads e processos depende das características específicas do problema, dos requisitos de desempenho e das considerações de segurança e robustez. Em geral, para este problema específico, a implementação com threads provavelmente seria mais eficiente, já que estamos lidando com um número relativamente pequeno de pessoas na fila, e desde que seja adequadamente sincronizada para evitar condições de corrida e outros problemas de concorrência, as threads mostram ser mais bem aproveitadas.
+A escolha entre threads e processos depende das características específicas do problema, dos requisitos de desempenho e das considerações de segurança e robustez. Em geral, para este problema específico, a implementação com threads seria mais eficiente, já que estamos lidando com um número relativamente pequeno de pessoas na fila, e desde que seja adequadamente sincronizada para evitar condições de corrida e outros problemas de concorrência, as threads mostram ser mais bem aproveitadas.
 
 
 
@@ -119,6 +119,29 @@ E3
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/4bb9e9a8-b85e-490f-a158-155a103c48d5)
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/47b53dfa-4cf5-453e-919f-b4ce06e26ccb)
 
+E4
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/4b1be794-b2d5-41f2-b6f4-3530e14523eb)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/7c159df8-a27b-4417-9386-ff08c73c3155)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/81aa512c-c514-48b6-be0b-77139fcd18ba)
+
+E5
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/148850e1-b6e0-4ff1-87ce-4dbc9da5a461)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/225e9008-e66c-479e-8838-aef5df1fc5d3)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/bdeb757a-09f4-4f95-822f-15ee5f49087d)
+
+E9
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/b3869d35-1326-4d68-a1c7-3292f6883fcd)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/85dd4f8f-1a4b-49bb-a7dc-2b96c43475ea)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/b3ad9a40-721f-425a-8d39-3abe4f08c216)
+
+E15
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/159c69c9-30f4-4f68-a38a-9f1ba2918434)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/9e0dede0-077a-4f68-b5ec-f5b3ea0c1f97)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/8d8ca70a-bee6-4fa0-9efe-d5c42570cd66)
 
 Prints versão utilizando threads:
 
@@ -149,4 +172,24 @@ E3
 
 E4
 
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/c5667ebd-24ab-4d91-8a7e-0c614d571dd9)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/fdfd5708-e18d-4f2b-8e04-e901039b35af)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/fa265fbf-ab70-4ae7-8e6c-d3bb33a0c473)
+
 E5
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/472089bb-2d56-4e24-a36e-fab1bb2f37dd)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/7200f309-935a-4484-9f57-5c0f97e9658f)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/f9539eb2-9338-4d01-8669-10162953448d)
+
+E9
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/19cfd9da-8937-4fde-b238-e575f3e565cc)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/c1578fd3-7605-4253-9a80-3d34068d756e)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/85e73ccc-2359-45d5-b7db-fa785d5c6838)
+
+E15
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/538e8ad8-26fe-4e90-8269-7f88ebb16058)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/45aef23d-a429-453f-aad9-18479e584d1a)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/bb8679dc-a9eb-41da-8c13-9d3f1c9a38a2)
