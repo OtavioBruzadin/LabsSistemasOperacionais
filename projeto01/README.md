@@ -72,15 +72,21 @@ QUESTÕES A SEREM RESPONDIDAS:
   Implementação com Threads:
 
 -Utiliza threads para representar cada pessoa na fila.
+
 -Compartilha memória entre as threads para acessar e modificar as informações da fila.
+
 -Pode ser mais leve em termos de recursos, pois as threads compartilham o mesmo espaço de endereço virtual.
+
 -Menor sobrecarga de comunicação entre processos, já que não é necessário o uso explícito de mecanismos de comunicação, como pipes ou memória compartilhada.
   
   Implementação com Processos:
 
 -Utiliza processos separados para processar as pessoas na fila.
+
 -Cada processo tem sua própria cópia da memória, o que implica em menos preocupações com a sincronização de acesso à memória compartilhada.
+
 -Mais robusta em termos de segurança e isolamento de dados, já que os processos têm espaços de endereçamento separados.
+
 -Requer o uso de mecanismos explícitos de comunicação entre processos, como pipes ou memória compartilhada, para troca de dados entre os processos.
 
 A escolha entre threads e processos depende das características específicas do problema, dos requisitos de desempenho e das considerações de segurança e robustez. Em geral, para este problema específico, a implementação com threads provavelmente seria mais eficiente, já que estamos lidando com um número relativamente pequeno de pessoas na fila, e desde que seja adequadamente sincronizada para evitar condições de corrida e outros problemas de concorrência, as threads mostram ser mais bem aproveitadas.
