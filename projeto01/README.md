@@ -11,20 +11,45 @@ sudo dnf install nano
 Para criar e editar um arquivo `.c` utilizamos o seguinte comando:
 ```bash
 nano projeto.c
+nano projetoVerP.c
 ```
-Após a criação e edição  para compilar, devemos utilizar o comando
+Após a criação e edição  para compilar, devemos utilizar o comando:
 
+Para threads
 ```bash
 gcc projeto.c -o result -lpthread -lrt
 ```
+
+Para processos
+```bash
+gcc projetoVerP.c -o result -lpthread -lrt
+```
+
 ## Como executar o programa:
 
-Para apresentar o resultado na tela, basta utilizarmos o comando abaixo
+Para incluir o exemplo, deve-se colocar dentro do arquivo entrada.txt, basta utilizarmos o comando:
+
+```bash
+nano entrada.txt
+```
+
+Para apresentar o resultado, basta utilizarmos o comando:
 
 ```bash
 ./result
 ```
 
+O resultado de threads aparecerá no arquivo saida.txt, basta utilizarmos o comando:
+
+```bash
+nano saida.txt
+```
+
+O resultado de processos aparecerá no arquivo saida.txt, basta utilizarmos o comando:
+
+```bash
+nano saida2.txt
+```
 ---
 
 
