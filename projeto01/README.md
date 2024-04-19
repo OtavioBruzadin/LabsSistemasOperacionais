@@ -33,13 +33,11 @@ QUESTÕES A SEREM RESPONDIDAS:
 1. Estratégia para evitar que duas pessoas acessem a escada rolante ao mesmo tempo:
    
     -THREADS:
+   Dentro do looping principal a direção das pessoas é identificada, se a direção for 0, a pessoa só poderá entrar se ainda houver pessoas na fila 0 e o tempo de chegada da primeira pessoa na fila 0 for menor ou igual ao tempo de referência, ou se o tempo de chegada da primeira pessoa na fila 0 estiver entre o tempo de referência e o tempo de chegada da primeira pessoa na fila 1, ou se a fila 1 estiver vazia.
    
-    Para isso foi utilizado um semáforo (`sem_t sem_escada;`) para controlar o acesso à escada rolante. O semáforo é inicializado com o valor 1 (`sem_init(&sem_escada, 0, 1);`), indicando que, inicialmente, uma thread (pessoa) pode acessar a região crítica – neste caso, a escada rolante.
-   
-    Antes de uma thread acessar a escada rolante (modificar o estado da direção atual ou calcular o último momento), ela deve adquirir o semáforo usando `sem_wait(&sem_escada);`. Isso decrementa o valor do semáforo. Se o valor for 0, isso significa que outra thread já está acessando a escada rolante, e a thread atual será bloqueada até que o semáforo seja liberado (seu valor incrementado novamente) pela thread que está na região crítica.
+   Agora, se a direção for 1, a lógica será a mesma, mas considerando a fila 1 ao invés da fila 0.
 
-    Após a thread realizar as operações necessárias (como entrar na escada rolante ou aguardar pela direção correta), ela libera o semáforo usando `sem_post(&sem_escada);`, permitindo que outra thread entre na região crítica. Este mecanismo garante que apenas uma thread por vez possa modificar o estado da escada rolante ou calcular o momento de sua utilização.
-
+   Assim após cada interação a referência é usada para o proximo "momentoChegada" para que a pessoa atenda as condições explicadas acima.
 
     -PROCESSOS:
 
@@ -50,15 +48,15 @@ Isso significa que, em qualquer momento, apenas um processo pode entrar na regi�
 Após a conclusão da atualização da direção atual da escada rolante e do último momento, o processo libera o semáforo usando sem_post(sem);, permitindo que outro processo entre na região crítica.
 
 
-3. Como garantir que somente uma das direções está ativa de cada vez:
+2. Como garantir que somente uma das direções está ativa de cada vez:
    
     -THREADS:
    
-    A direção atual da escada rolante é controlada pela variável global `int direcao_atual;`, que é inicialmente definida como -1, que demonstra que a escada está parada. A direção pode ser alterada para 0 (indicando uma direção) ou 1 (indicando a direção oposta) conforme a necessidade das pessoas que estão chegando.
-   
-   Dentro da função `pessoa_thread`, após adquirir o semáforo, a thread verifica se a direção atual da escada rolante corresponde à direção desejada pela pessoa (`if (direcao_atual == -1 || direcao_atual == pessoa->direcao)`). Se a direção for a mesma ou a escada estiver parada, a pessoa pode "entrar" na escada rolante, e a direção atual é atualizada para refletir a direção dessa pessoa.
-   
-   Essa checagem e atualização da direção acontecem dentro da região crítica protegida pelo semáforo, o que garante que apenas uma direção esteja ativa em qualquer momento, e uma mudança de direção só pode ocorrer se nenhuma outra pessoa estiver utilizando a escada rolante em uma direção diferente. Isso efetivamente garante que a escada rolante só se mova em uma direção por vez, conforme as pessoas entram na escada rolante.
+    Essencialmente, o código alterna entre as direções (0 e 1) com base nas condições fornecidas, garantindo que apenas uma direção esteja ativa de cada vez.
+
+    No início da função threadPessoa, a variável primeira é inicializada com a primeira pessoa da fila, a escolha é feita com base na pessoa que chegou primeiro em ambas as filas. Em seguida vem o looping, que rodará enquanto ainda houver pessoas em qualquer uma das filas.
+
+    Já as condições de mudança seriam: Se a direção for 0 e não houver mais pessoas na fila que vai para essa mesma direção, ou se o tempo de chegada da próxima pessoa na fila que vai para cima for maior que o tempo de referência, ou se a fila que vai para cima estiver vazia, então a direção é alterada para 1. E para a direção 1 é essencialmente a mesma coisa, porém considerando a fila 1 ao invés da 0, e no final alternando para 0.
 
 
     -PROCESSOS:
