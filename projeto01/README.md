@@ -1,4 +1,4 @@
-![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/2149b7bc-81f6-4d1d-a530-002822f14ee5)## Como compilar o programa:
+## Como compilar o programa:
 
 Para compilar códigos em C, é necessário instalar o compilador gcc.
 ```bash
