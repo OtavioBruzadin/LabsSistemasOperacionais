@@ -2,7 +2,7 @@
 #include <pthread.h>
 
 // Definindo o número máximo de pessoas na fila
-#define MAX_PESSOA 100
+#define MAX_PESSOA 1000
 
 // Definição da estrutura para representar uma pessoa na fila
 typedef struct {
