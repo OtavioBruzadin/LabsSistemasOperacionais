@@ -43,9 +43,9 @@ QUESTÕES A SEREM RESPONDIDAS:
 
    Estratégia para evitar que duas pessoas acessem a escada rolante ao mesmo tempo:
    
-   Utilizamos um semáforo POSIX, identificado por SEM_NAME, para controlar o acesso à região crítica do programa, que inclui a verificação e atualização da direção atual da escada rolante, bem como do último momento em que alguém utilizou a escada. O semáforo é inicializado com o valor 1 (sem_t* sem = sem_open(SEM_NAME, O_CREAT, 0666, 1);)
-Isso significa que, em qualquer momento, apenas um processo pode entrar na região crítica. Quando um processo (representando uma pessoa) quer acessar a escada rolante, ele primeiro tenta "travar" (ou "esperar por") o semáforo usando sem_wait(sem);. Isso reduz o contador do semáforo. Se o contador for maior que zero, o processo pode entrar na região crítica. Se o contador for zero, isso significa que outro processo já está na região crítica, e o processo atual será bloqueado até que o semáforo seja liberado (incrementado) por outro processo.
-Após a conclusão da atualização da direção atual da escada rolante e do último momento, o processo libera o semáforo usando sem_post(sem);, permitindo que outro processo entre na região crítica.
+   Usamos um pipe de comunicação, a função criarProcesso utiliza um pipe para comunicação entre processos. O pipe é um mecanismo que permite a comunicação entre o processo pai e o processo filho. em seguida quando a função criarProcesso é chamada, um novo processo filho é criado usando a função fork(). Isso resulta em dois processos: o processo pai e o processo filho, eles utilizam justamente o pipe para comunicação, onde o pai eescreve o novo momento de chegada no pipe, e o filho lê esse valor. O filho atualiza o "momentoChegada" e o pai espera o processo do filho com a função "wait()".
+
+   Essa abordagem garante que apenas uma pessoa entre na escada por vez, pois cada processo filho é responsável por atualizar o "momentoChegada", pois o o pipe garante que o momento de chegada seja atualizado de forma sequencial, permitindo que apenas uma pessoa entre na escada por vez.
 
 
 2. Como garantir que somente uma das direções está ativa de cada vez:
@@ -63,28 +63,9 @@ Após a conclusão da atualização da direção atual da escada rolante e do ú
 
    Como garantir que somente uma das direções está ativa de cada vez:
 
-   
-    Para controlar a direção da escada rolante e garantir que apenas uma direção esteja ativa em qualquer momento, utilizamos uma variável compartilhada (direcao_atual) dentro da estrutura EstadoEscada que é mapeada em uma área de memória compartilhada entre todos os processos:
+   A variável direcaoAux é usada para controlar a direção atual em que as pessoas estão se movendo na escada. Inicialmente, ela é inicializada com a direção fornecida pelo arquivo de entrada, em seguida o código verifica qual fila tem a próxima pessoa a entrar na escada. Isso é feito comparando os tempos de chegada das próximas pessoas em ambas as filas: Se a próxima pessoa na fila 0 chegar antes da próxima na fila 1 (ou se a fila 1 estiver vazia), a direção atual é definida como 0 .Se a próxima pessoa na fila 1 chegar antes da próxima na fila 0 (ou se a fila 0 estiver vazia), a direção atual é definida como 1.
 
-```bash
-typedef struct {
-    int direcao_atual;
-    int ultimo_momento;
-} EstadoEscada;
-```
-
-A lógica implementada na função simula_pessoa assegura que, antes de qualquer processo modificar a direção atual, ele verifica se a direção desejada é igual à direção atual ou se a escada está parada (direcao_atual == -1). Isso é feito dentro da região crítica protegida pelo semáforo, garantindo que as verificações e atualizações sejam feitas de maneira atômica, sem interferência de outros processos:
-
-```
-if (estado->direcao_atual == -1 || estado->direcao_atual == direcao) {
-    estado->direcao_atual = direcao;
-    estado->ultimo_momento = tempo_chegada + 10;
-}
-```
-Essa abordagem assegura que a escada só mude de direção quando ninguém estiver usando-a na direção oposta e que apenas uma direção esteja ativa em cada momento, mantendo a sincronização e lógica esperadas conforme o enunciado do problema.
-
-
-
+   Quando a direção muda, o momento de chegada é ajustado de acordo. Isso é feito para garantir que as pessoas na fila correspondente aguardem o tempo adequado antes de entrar na escada. Alternando entre as direções com base nos tempos de chegada das próximas pessoas em cada fila, fazendo assim com que as pessoas entrem na escada na ordem apropriada, evitando a sobreposição ou o tempo de espera desnecessário.
 
 3. Discorra sobre as diferenças entre as implementações utilizando threads e processos e diga qual foi mais eficiente na solução do problema, justificando sua resposta.
 
