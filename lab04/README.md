@@ -17,3 +17,12 @@ Após a criação e edição  para compilar, devemos utilizar o comando:
 gcc pthread.c -o result -lpthread -lrt
 ```
 
+## Como executar o programa:
+
+Para apresentar o resultado na tela, basta utilizarmos o comando abaixo
+
+```bash
+./result
+```
+
+---
