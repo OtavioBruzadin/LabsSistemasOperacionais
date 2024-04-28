@@ -27,7 +27,7 @@ Para apresentar o resultado na tela, basta utilizarmos o comando abaixo
 
 ---
 
-## Comprovando a execução do programa:
+## Comprovando a execução do programa e Envio ao repositório no GitHub:
 
 ![Imagem do WhatsApp de 2024-04-23 à(s) 09 30 30_6ee62457](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/89026599/897dfbe3-e308-4f6c-815e-8d530c9e9f40)
 
