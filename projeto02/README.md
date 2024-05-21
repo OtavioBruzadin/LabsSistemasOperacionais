@@ -20,10 +20,6 @@ gcc -0 result projeto02.c -lpthread
 ```bash
 ./result
 ```
-O resultado aparecerá no arquivo saida.txt, basta utilizarmos o comando:
-```bash
-nano saida.txt
-```
 
 
 
@@ -40,3 +36,10 @@ nano saida.txt
 ## 
 
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/cef2da46-4218-4342-a698-f0b2ae3c1abe)
+
+## Provando os requisitos:
+1 - 
+2 -
+3 -
+4 -
+5 -
