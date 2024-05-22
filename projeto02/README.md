@@ -38,8 +38,19 @@ gcc -0 result projeto02.c -lpthread
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/cef2da46-4218-4342-a698-f0b2ae3c1abe)
 
 ## Provando os requisitos:
-1 - 
-2 -
-3 -
-4 -
-5 -
+
+1 - É possível realizar mais de uma tranferência por conta do mutex(to.mutex) e utilizando pthread_mutex_init para isso.
+
+
+2 - A conta from enviar mais de uma transação simultânea por conta da função (from.mutex).
+
+
+3 - Há uma verificação na função transferência que supre este requisito, no código feito é demonstrado com um print do if para a comprovação.
+
+
+4 - Como ambas são bloqueadas por mutexes individuais, teoricamente nenhuma delas pode dever e credar.
+
+
+5 - O loop se inicia com 100 threads (comprovado por print), é utilizado um clone para isso e cada um possui seu próprio espaço de pilha
+
+
