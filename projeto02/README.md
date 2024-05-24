@@ -39,18 +39,22 @@ gcc -o result projeto02.c -lpthread
 
 ## Provando os requisitos:
 
-1 - É possível realizar mais de uma tranferência por conta do mutex(to.mutex) e utilizando pthread_mutex_init para isso.
+1 - É possível realizar mais de uma tranferência por conta do mutex(to.mutex) e utilizando pthread_mutex_init impedir que haja deadlocks e problemas na hora de transferir valores de uma conta para outra.
 
 
-2 - A conta from enviar mais de uma transação simultânea por conta da função (from.mutex).
+2 - A conta from pode enviar mais de uma transação simultânea por conta da função mutex(from.mutex).
 
 
-3 - Há uma verificação na função transferência que supre este requisito, no código feito é demonstrado com um print do if para a comprovação.
+3 - Há uma verificação na função transferência que supre este requisito.
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/04fcc99a-e0e3-4f32-8fff-56c7de978d9e)
+
+Se a valor do saldo for menor que a valor da transação, o código não executará o trecho em questão.
 
 
 4 - Como ambas são bloqueadas por mutexes individuais, teoricamente nenhuma delas pode dever e credar.
 
 
-5 - O loop se inicia com 100 threads (comprovado por print), é utilizado um clone para isso e cada um possui seu próprio espaço de pilha
+5 - O loop se inicia com 100 threads, é utilizado um clone para isso e cada um possui seu próprio espaço de pilha.
 
 
