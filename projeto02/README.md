@@ -47,7 +47,7 @@ gcc -o result projeto02.c -lpthread
 
 3 - Há uma verificação na função transferência que supre este requisito.
 
-![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/04fcc99a-e0e3-4f32-8fff-56c7de978d9e)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/92bab806-1b01-4102-a629-a802b342cd84)
 
 Se a valor do saldo for menor que a valor da transação, o código não executará o trecho em questão.
 
