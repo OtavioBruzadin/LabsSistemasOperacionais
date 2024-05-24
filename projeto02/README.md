@@ -24,7 +24,7 @@ gcc -o result projeto02.c -lpthread
 
 
 ## Comprovando a execução do programa:
-![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/74ad4363-ff7c-4046-9f35-9abb4a8f324f)
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/10bcc0e0-5752-45a4-ab72-ef039022c059)
 
 
 ## Código:
