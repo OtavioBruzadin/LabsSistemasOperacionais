@@ -52,9 +52,10 @@ gcc -o result projeto02.c -lpthread
 Se a valor do saldo for menor que a valor da transação, o código não executará o trecho em questão.
 
 
-4 - Como ambas são bloqueadas por mutexes individuais, teoricamente nenhuma delas pode dever e credar.
+4 - Sim, graças aos ponteiros Sender e Receiver, que fazem com que não importa se é o to ou o from que precise dar ou receber, ele só precisa estar disponivel e com saldo.
 
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/ccbc198b-00f5-47a8-999a-44b2573fc7b0)
 
-5 - O loop se inicia com 100 threads, é utilizado um clone para isso e cada um possui seu próprio espaço de pilha.
+5 - Basta mudar o loop de threads para o tamanho preferível, mas ele pode sim fazer até 100 transações.
 
 
