@@ -57,5 +57,22 @@ Se a valor do saldo for menor que a valor da transação, o código não executa
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/ccbc198b-00f5-47a8-999a-44b2573fc7b0)
 
 5 - Basta modificar o array de threads para o tamanho preferível, e adicionar mais transferências nos loops for que criam as threads, mas ele pode sim fazer até 100 transações.
+Como por exemplo:
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/55d7089b-5388-4a5e-a5f3-b6be4457766c)
+
+Aumentar esse valor de 15 pra 100
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/e45a9258-a62a-4fc6-be86-6a8b4ed4d6d8)
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/0ef2da01-e13d-47d1-856f-36e0a5b5ef62)
+
+E esses loops para: 
+for (i = 0; i < 70; i++) do 'from' pro 'to' 
+
+E: 
+for (i = 70; i < 100; i++) do 'to' pro 'from'
+
+
 
 
