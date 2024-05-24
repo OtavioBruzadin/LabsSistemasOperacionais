@@ -14,7 +14,7 @@ nano projeto02.c
 ```
 Após a criação e edição  para compilar, devemos utilizar o comando:
 ```bash
-gcc -0 result projeto02.c -lpthread
+gcc -o result projeto02.c -lpthread
 ```
 ## Como executar o programa:
 ```bash
