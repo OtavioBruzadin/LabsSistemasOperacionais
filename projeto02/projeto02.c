@@ -1,84 +1,87 @@
 #define _GNU_SOURCE
-#include <stdlib.h>
-#include <malloc.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <signal.h>
-#include <sched.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <pthread.h>
 
-// 64kB stack
 #define FIBER_STACK 1024*64
 
-struct c {
+struct conta {
     int saldo;
     pthread_mutex_t mutex;
 };
-typedef struct c conta;
 
-conta from, to;
+typedef struct conta Conta;
+
+Conta from, to;
 int valor;
 
-// A função de transferência agora usa mutex para sincronizar o acesso aos saldos
-int transferencia(void *arg) {
-    pthread_mutex_lock(&from.mutex); // Bloqueia o mutex de 'from'
-    if (from.saldo >= valor) {
-        from.saldo -= valor;
-        pthread_mutex_lock(&to.mutex); // Bloqueia o mutex de 'to' dentro da condição
-        to.saldo += valor;
-        pthread_mutex_unlock(&to.mutex); // Libera o mutex de 'to'
+void *transferencia(void *args) {
+    Conta *sender = ((Conta**)args)[0];
+    Conta *receiver = ((Conta**)args)[1];
+
+    pthread_mutex_lock(&sender->mutex);
+    pthread_mutex_lock(&receiver->mutex);
+
+    if (sender->saldo >= valor) {
+        sender->saldo -= valor;
+        receiver->saldo += valor;
     }
-    pthread_mutex_unlock(&from.mutex); // Libera o mutex de 'from'
+
+    pthread_mutex_unlock(&receiver->mutex);
+    pthread_mutex_unlock(&sender->mutex);
+
     printf("Transferência concluída com sucesso!\n");
     printf("Saldo de c1: %d\n", from.saldo);
     printf("Saldo de c2: %d\n", to.saldo);
-    return 0;
+
+    return NULL;
 }
 
 int main() {
-    void *stack;
-    pid_t pid;
-    int i, status;
+    pthread_t threads[15]; // Array para armazenar threads
+    int i;
 
     // Inicializa os mutexes
     pthread_mutex_init(&from.mutex, NULL);
     pthread_mutex_init(&to.mutex, NULL);
 
-    // Aloca a pilha
-    stack = malloc(FIBER_STACK);
-    if (stack == 0) {
-        perror("malloc: could not allocate stack");
-        exit(1);
-    }
-
     // Todas as contas começam com saldo 100
     from.saldo = 100;
     to.saldo = 100;
 
-    printf("Transferindo 10 para a conta c2\n");
+    printf("Transferindo 10 de from para to\n");
     valor = 10;
     for (i = 0; i < 10; i++) {
-        pid = clone(&transferencia, (char*)stack + FIBER_STACK,
-            SIGCHLD | CLONE_FS | CLONE_FILES | CLONE_SIGHAND | CLONE_VM, 0);
-        if (pid == -1) {
-            perror("clone");
+        Conta *args[] = {&from, &to};
+        if (pthread_create(&threads[i], NULL, transferencia, args) != 0) {
+            perror("pthread_create");
             exit(2);
         }
     }
 
-    // Espera por todas as threads filhas
-    for (i = 0; i < 10; i++) {
-        wait(&status); // Aguarda qualquer filho terminar
+    printf("Transferindo 5 de to para from\n");
+    valor = 5;
+    for (i = 0; i < 5; i++) {
+        Conta *args[] = {&to, &from};
+        if (pthread_create(&threads[i+10], NULL, transferencia, args) != 0) {
+            perror("pthread_create");
+            exit(2);
+        }
     }
 
-    // Libera a pilha
-    free(stack);
-    printf("Transferências concluídas e memória liberada.\n");
+    // Espera por todas as threads
+    for (i = 0; i < 15; i++) {
+        if (pthread_join(threads[i], NULL) != 0) {
+            perror("pthread_join");
+            exit(3);
+        }
+    }
 
     // Destroi os mutexes
     pthread_mutex_destroy(&from.mutex);
     pthread_mutex_destroy(&to.mutex);
+
+    printf("Transferências concluídas e memória liberada.\n");
 
     return 0;
 }
