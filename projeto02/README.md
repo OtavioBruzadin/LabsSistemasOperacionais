@@ -56,6 +56,6 @@ Se a valor do saldo for menor que a valor da transação, o código não executa
 
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/ccbc198b-00f5-47a8-999a-44b2573fc7b0)
 
-5 - Basta mudar o loop de threads para o tamanho preferível, mas ele pode sim fazer até 100 transações.
+5 - Basta modificar o array de threads para o tamanho preferível, e adicionar mais transferências nos loops for que criam as threads, mas ele pode sim fazer até 100 transações.
 
 
