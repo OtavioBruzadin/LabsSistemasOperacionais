@@ -1,4 +1,3 @@
-#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -14,8 +13,11 @@ typedef struct conta Conta;
 
 Conta from, to;
 int valor;
+pthread_mutex_t transfer_mutex;
 
 void *transferencia(void *args) {
+    pthread_mutex_lock(&transfer_mutex);
+
     Conta *sender = ((Conta**)args)[0];
     Conta *receiver = ((Conta**)args)[1];
 
@@ -30,6 +32,8 @@ void *transferencia(void *args) {
     pthread_mutex_unlock(&receiver->mutex);
     pthread_mutex_unlock(&sender->mutex);
 
+    pthread_mutex_unlock(&transfer_mutex);
+
     printf("Transferência concluída com sucesso!\n");
     printf("Saldo de c1: %d\n", from.saldo);
     printf("Saldo de c2: %d\n", to.saldo);
@@ -38,12 +42,13 @@ void *transferencia(void *args) {
 }
 
 int main() {
-    pthread_t threads[15]; // Array para armazenar threads
+    pthread_t threads[100]; // Array para armazenar threads
     int i;
 
     // Inicializa os mutexes
     pthread_mutex_init(&from.mutex, NULL);
     pthread_mutex_init(&to.mutex, NULL);
+    pthread_mutex_init(&transfer_mutex, NULL);
 
     // Todas as contas começam com saldo 100
     from.saldo = 100;
@@ -51,9 +56,8 @@ int main() {
 
     printf("Transferindo 10 de from para to\n");
     valor = 10;
-    for (i = 0; i < 10; i++) {
-        Conta *args[] = {&from, &to};
-        if (pthread_create(&threads[i], NULL, transferencia, args) != 0) {
+    for (i = 0; i < 50; i++) {
+        if (pthread_create(&threads[i], NULL, transferencia, (void*[]){&from, &to}) != 0) {
             perror("pthread_create");
             exit(2);
         }
@@ -61,16 +65,15 @@ int main() {
 
     printf("Transferindo 5 de to para from\n");
     valor = 5;
-    for (i = 0; i < 5; i++) {
-        Conta *args[] = {&to, &from};
-        if (pthread_create(&threads[i+10], NULL, transferencia, args) != 0) {
+    for (i = 0; i < 50; i++) {
+        if (pthread_create(&threads[i+50], NULL, transferencia, (void*[]){&to, &from}) != 0) {
             perror("pthread_create");
             exit(2);
         }
     }
 
     // Espera por todas as threads
-    for (i = 0; i < 15; i++) {
+    for (i = 0; i < 100; i++) {
         if (pthread_join(threads[i], NULL) != 0) {
             perror("pthread_join");
             exit(3);
@@ -80,6 +83,7 @@ int main() {
     // Destroi os mutexes
     pthread_mutex_destroy(&from.mutex);
     pthread_mutex_destroy(&to.mutex);
+    pthread_mutex_destroy(&transfer_mutex);
 
     printf("Transferências concluídas e memória liberada.\n");
 
