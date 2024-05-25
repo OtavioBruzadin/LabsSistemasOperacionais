@@ -67,10 +67,10 @@ Aumentar esse valor de 15 pra 100
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/0ef2da01-e13d-47d1-856f-36e0a5b5ef62)
 
 E esses loops para: 
-for (i = 0; i < 70; i++) do 'from' pro 'to' 
+for (i = 0; i < 50; i++) do 'from' pro 'to' 
 
 E: 
-for (i = 70; i < 100; i++) do 'to' pro 'from'
+for (i = 50; i < 100; i++) do 'to' pro 'from'
 
 
 
