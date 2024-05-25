@@ -30,7 +30,12 @@ gcc -o result projeto02.c -lpthread
 ## Código:
 
 ![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/a739ef86-3f6a-4da3-aef3-ec35bf0e9b64)
-![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/c86d8321-f365-469d-9793-3f8bfde8309a)
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/255dfdcf-b705-46fe-a70c-d3790f88405a)
+
+![image](https://github.com/OtavioBruzadin/LabsSistemasOperacionais/assets/146960599/77cbdde0-18e5-49c4-846b-2cd1dcc330cd)
+
+
 
 ## 
 
