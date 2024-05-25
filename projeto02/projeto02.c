@@ -65,8 +65,8 @@ int main() {
 
     printf("Transferindo 5 de to para from\n");
     valor = 5;
-    for (i = 0; i < 50; i++) {
-        if (pthread_create(&threads[i+50], NULL, transferencia, (void*[]){&to, &from}) != 0) {
+    for (i = 50; i < 100; i++) {
+        if (pthread_create(&threads[i], NULL, transferencia, (void*[]){&to, &from}) != 0) {
             perror("pthread_create");
             exit(2);
         }
